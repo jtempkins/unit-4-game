@@ -25,12 +25,12 @@ $(document).ready(function() {
 
    //Initial Start game
  function startGame(){
-  gamescore = 0;
+  gamescore = 0;		//uncommented this line as this is where you were resetting your score from the buttons
   crystalcollected = 0;
   wins = 0;
   losses = 0;
   startGame=("");
-  userTotal = 0;
+  //userTotal = 0;		//commented this out as it is never used in the entire page
   num1= Math.floor(Math.random()*11+1)
   num2= Math.floor(Math.random()*11+1)
   num3= Math.floor(Math.random()*11+1)
@@ -39,17 +39,18 @@ $(document).ready(function() {
  }
 
  function continueGame(){
-  // gamescore = 0;
+  gamescore = 0;		//uncommented this as well same as the other line
   randomNumber = Math.floor(Math.random() * 101 + 19);
   crystalcollected = 0;
   // wins = 0;
   // losses = 0;
   startGame=("");
-  userTotal = 0;
+  //userTotal = 0;		//still wasnt used
   num1= Math.floor(Math.random()*11+1)
   num2= Math.floor(Math.random()*11+1)
   num3= Math.floor(Math.random()*11+1)
   num4= Math.floor(Math.random()*11+1)
+  $("#numberToGuess").text(randomNumber);	// added so that it will actually show new number when you do this function
    
  }
 
@@ -85,6 +86,7 @@ $('#img1').on ('click', function(){
           continueGame();
 
         }
+		$("#gamescore").text(gamescore);	//added this so that after you win it will show that your new score is at 0
   })  ;
 
   $('#img2').on ('click', function(){
@@ -95,12 +97,15 @@ $('#img1').on ('click', function(){
           if ( gamescore > randomNumber){
             losses++;
             $('#losses').text(losses);
+			continueGame();
 
           }   
           else if (gamescore === randomNumber){
           wins++;
           $('#wins').text(wins);
+		  continueGame();
        }
+	   $("#gamescore").text(gamescore);		//added this so that after you win it will show that your new score is at 0
       });
   
   $('#img3').on ('click', function(){
@@ -111,12 +116,15 @@ $('#img1').on ('click', function(){
      if ( gamescore > randomNumber){
        losses++;
        $('#losses').text(losses);
+	   continueGame();
 
      }   
      else if (gamescore === randomNumber){
      wins++;
      $('#wins').text(wins);
+	 continueGame();
                 }
+				$("#gamescore").text(gamescore);		//added this so that after you win it will show that your new score is at 0
                    });   
 
     $('#img4').on('click', function(){
@@ -127,12 +135,15 @@ $('#img1').on ('click', function(){
       if ( gamescore > randomNumber){
         losses++;
         $('#losses').text(losses);
+		continueGame();
 
       }   
       else if (gamescore === randomNumber){
       wins++;
       $('#wins').text(wins);
+	  continueGame();
 }
+$("#gamescore").text(gamescore);		//added this so that after you win it will show that your new score is at 0
   })
-  $("#gamescore").text(userTotal);
+  $("#gamescore").text(gamescore);		
 })
